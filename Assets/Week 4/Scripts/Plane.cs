@@ -7,11 +7,15 @@ public class Plane : MonoBehaviour
     public List<Vector2> points;
     public float newPointThreshold = 0.2f;
     public float speed = 1f;
+    float landingTimer;
+
     Vector2 lastPosition;
     Vector2 currentPosition;
 
     LineRenderer lineRenderer;
     Rigidbody2D rb;
+
+    public AnimationCurve landing;
 
     private void Start()
     {
@@ -35,6 +39,17 @@ public class Plane : MonoBehaviour
 
     private void Update()
     {
+        if(Input.GetKey(KeyCode.Space)) 
+        {
+            landingTimer += 2f * Time.deltaTime;
+            float interpolation = landing.Evaluate(landingTimer);
+            if (transform.localScale.z < 0.1f)
+            {
+                Destroy(gameObject);
+            }
+            transform.localScale = Vector3.Lerp(Vector3.one, Vector3.zero, interpolation);
+        }
+
         lineRenderer.SetPosition(0, transform.position);
         if (points.Count > 0)
         {
@@ -46,7 +61,7 @@ public class Plane : MonoBehaviour
                 {
                     lineRenderer.SetPosition(i, lineRenderer.GetPosition(i + 1));
                 }
-                lineRenderer.positionCount--;
+                if(lineRenderer.positionCount != 0) lineRenderer.positionCount--;
             }
         }
     }
