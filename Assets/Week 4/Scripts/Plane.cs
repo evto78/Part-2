@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Plane : MonoBehaviour
 {
+    public Sprite[] sprites;
     public List<Vector2> points;
     public float newPointThreshold = 0.2f;
     public float speed = 1f;
@@ -14,6 +15,7 @@ public class Plane : MonoBehaviour
 
     LineRenderer lineRenderer;
     Rigidbody2D rb;
+    SpriteRenderer sr;
 
     public AnimationCurve landing;
 
@@ -23,6 +25,12 @@ public class Plane : MonoBehaviour
         lineRenderer.positionCount = 1;
         lineRenderer.SetPosition(0, transform.position);
         rb = GetComponent<Rigidbody2D>();
+        sr = GetComponent<SpriteRenderer>();
+
+        transform.Translate(Random.Range(-5, 5), Random.Range(-5, 5),0);
+        rb.rotation = Random.Range(0f, 360f);
+        speed = Random.Range(1, 3);
+        sr.sprite = sprites[Random.Range(1, 4)];
     }
 
     private void FixedUpdate()
@@ -86,5 +94,10 @@ public class Plane : MonoBehaviour
             lineRenderer.SetPosition(lineRenderer.positionCount - 1, newPosition);
             lastPosition = newPosition;
         }
+    }
+
+    void OnBecameInvisible()
+    {
+        Destroy(gameObject);
     }
 }
