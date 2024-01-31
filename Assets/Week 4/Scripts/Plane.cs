@@ -10,6 +10,8 @@ public class Plane : MonoBehaviour
     public float speed = 1f;
     float landingTimer;
 
+    bool isLanding = false;
+
     Vector2 lastPosition;
     Vector2 currentPosition;
 
@@ -47,7 +49,7 @@ public class Plane : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKey(KeyCode.Space)) 
+        if(isLanding)
         {
             landingTimer += 2f * Time.deltaTime;
             float interpolation = landing.Evaluate(landingTimer);
@@ -106,6 +108,11 @@ public class Plane : MonoBehaviour
         if (Vector3.Distance(transform.position, collision.transform.position) < 0.4f && collision.tag == "Plane")
         {
             Destroy(gameObject);
+        }
+
+        if (collision.tag != "Plane")
+        {
+            isLanding = true;
         }
     }
 
