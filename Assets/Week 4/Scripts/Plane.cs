@@ -6,9 +6,12 @@ public class Plane : MonoBehaviour
 {
     public Sprite[] sprites;
     public List<Vector2> points;
+
     public float newPointThreshold = 0.2f;
     public float speed = 1f;
     float landingTimer;
+
+    bool isLanding = false;
 
     Vector2 lastPosition;
     Vector2 currentPosition;
@@ -106,6 +109,11 @@ public class Plane : MonoBehaviour
         if (Vector3.Distance(transform.position, collision.transform.position) < 0.4f && collision.tag == "Plane")
         {
             Destroy(gameObject);
+        }
+
+        if (collision.tag != "Plane")
+        {
+
         }
     }
 
