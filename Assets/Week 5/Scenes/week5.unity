@@ -595,11 +595,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1966432914008935564, guid: 49b81783809989847a82008851502ce1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.464109
+      value: -5.52
       objectReference: {fileID: 0}
     - target: {fileID: 1966432914008935564, guid: 49b81783809989847a82008851502ce1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.029133558
+      value: -1.83
       objectReference: {fileID: 0}
     - target: {fileID: 1966432914008935564, guid: 49b81783809989847a82008851502ce1, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1457,7 +1457,7 @@ GameObject:
   - component: {fileID: 4709178891696108590}
   m_Layer: 0
   m_Name: Knight
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
