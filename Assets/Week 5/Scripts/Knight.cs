@@ -20,9 +20,25 @@ public class Knight : MonoBehaviour
 
     void Start()
     {
-        health = maxHealth;
+        if (PlayerPrefs.GetFloat("KnightHp") != null)
+        {
+            health = PlayerPrefs.GetFloat("KnightHp");
+            SendMessage("SetHealth", health, SendMessageOptions.DontRequireReceiver);
+        }
+        else
+        {
+            health = maxHealth;
+            SendMessage("SetHealth", health, SendMessageOptions.DontRequireReceiver);
+        }
+
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+
+        if (health <= 0)
+        {
+            animator.SetTrigger("Death");
+            isDead = true;
+        }
     }
 
     private void FixedUpdate()
@@ -38,6 +54,7 @@ public class Knight : MonoBehaviour
 
     void Update()
     {
+        PlayerPrefs.SetFloat("KnightHp", health);
         if (isDead) return;
         if (Input.GetMouseButtonDown(0) && !clickedOnSelf && !EventSystem.current.IsPointerOverGameObject())
         {
