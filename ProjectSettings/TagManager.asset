@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Plane
   - interactable
+  - dangerous
   layers:
   - Default
   - TransparentFX
