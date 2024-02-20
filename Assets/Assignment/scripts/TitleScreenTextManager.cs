@@ -149,6 +149,11 @@ public class TitleScreenTextManager : MonoBehaviour
 
     void Update()
     {
+        
+    }
 
+    public void GoToMainScene()
+    {
+        SceneManager.LoadScene("assignmentMain");
     }
 }
