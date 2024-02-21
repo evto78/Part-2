@@ -19,6 +19,7 @@ public class CarScript : MonoBehaviour
         pullInTimer = 2;
         sr = GetComponent<SpriteRenderer>();
         sr.sprite = closedHood;
+        sr.sortingOrder = 3;
         sr.color = Color.HSVToRGB(Random.value,0.4f,Random.Range(0.2f, 1f));
     }
 
@@ -29,7 +30,11 @@ public class CarScript : MonoBehaviour
             pullInTimer -= Time.deltaTime;
             transform.Translate(0f,-0.32f * Time.deltaTime,0f);
         }
-        
-        if (pullInTimer <= 0) sr.sprite = openHood;
+
+        if (pullInTimer <= 0) 
+        {
+            sr.sprite = openHood;
+            sr.sortingOrder = -10;
+        } 
     }
 }
