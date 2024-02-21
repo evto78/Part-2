@@ -47,7 +47,7 @@ public class CarScript : MonoBehaviour
             sr.sortingOrder = -10;
         }
 
-        if (carButton1.ready && carButton2.ready && carButton3.ready && spinny.ready && lever.ready)
+        if (carButton1.ready && carButton2.ready && carButton3.ready && spinny.ready && lever.ready && !everyThingReady)
         {
             everyThingReady = true;
             sr.sprite = closedHood;
@@ -57,14 +57,16 @@ public class CarScript : MonoBehaviour
 
         if (pullOutTimer > 0)
         {
+            Debug.Log("GOIN" + pullOutTimer);
             pullOutTimer -= Time.deltaTime;
             transform.Translate(0f, -3 * Time.deltaTime, 0f);
-            if (pullOutTimer <= 0)
-            {
-                sr.sprite = openHood;
-                sr.sortingOrder = -10;
-                SceneManager.LoadScene("assignmentMain");
-            }
+            
+        }
+
+        if (pullOutTimer <= 0 && everyThingReady)
+        {
+            Debug.Log("gone");
+            SceneManager.LoadScene("assignmentMain");
         }
     }
 }
