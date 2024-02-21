@@ -3,6 +3,7 @@ using UnityEngine.EventSystems;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CarScript : MonoBehaviour
 {
@@ -40,7 +41,7 @@ public class CarScript : MonoBehaviour
             transform.Translate(0f,-0.32f * Time.deltaTime,0f);
         }
 
-        if (pullInTimer <= 0) 
+        if (pullInTimer <= 0 && pullOutTimer !<= 0) 
         {
             sr.sprite = openHood;
             sr.sortingOrder = -10;
@@ -51,7 +52,19 @@ public class CarScript : MonoBehaviour
             everyThingReady = true;
             sr.sprite = closedHood;
             sr.sortingOrder = 3;
-            pullOutTimer = 10f;
+            pullOutTimer = 3f;
+        }
+
+        if (pullOutTimer > 0)
+        {
+            pullOutTimer -= Time.deltaTime;
+            transform.Translate(0f, -3 * Time.deltaTime, 0f);
+            if (pullOutTimer <= 0)
+            {
+                sr.sprite = openHood;
+                sr.sortingOrder = -10;
+                SceneManager.LoadScene("assignmentMain");
+            }
         }
     }
 }
