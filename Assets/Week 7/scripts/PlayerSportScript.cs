@@ -23,7 +23,7 @@ public class PlayerSportScript : MonoBehaviour
 
     private void OnMouseDown()
     {
-        Selected(true);
+        SportController.SetCurrentSelection(this);
     }
 
     public void Selected(bool isSelected)
