@@ -18,6 +18,7 @@ public class CarScript : MonoBehaviour
     public carButtonScript carButton3;
     public spinnythingScript spinny;
     public leverScript lever;
+    public heartScript heart;
 
     float pullInTimer = 2;
     float pullOutTimer = 0;
@@ -47,7 +48,7 @@ public class CarScript : MonoBehaviour
             sr.sortingOrder = -10;
         }
 
-        if (carButton1.ready && carButton2.ready && carButton3.ready && spinny.ready && lever.ready && !everyThingReady)
+        if (heart.ready && carButton1.ready && carButton2.ready && carButton3.ready && spinny.ready && lever.ready && !everyThingReady)
         {
             everyThingReady = true;
             sr.sprite = closedHood;
@@ -65,6 +66,8 @@ public class CarScript : MonoBehaviour
 
         if (pullOutTimer <= 0 && everyThingReady)
         {
+            PlayerPrefs.SetFloat("CarsFixed", PlayerPrefs.GetFloat("CarsFixed") + 1f);
+            PlayerPrefs.SetFloat("MoneyMade", PlayerPrefs.GetFloat("MoneyMade") + Random.Range(200.0f,2000.0f) * 1000 * Time.deltaTime);
             Debug.Log("gone");
             SceneManager.LoadScene("assignmentMain");
         }

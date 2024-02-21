@@ -26,7 +26,7 @@ public class TeapotScript : MonoBehaviour
     private void OnMouseDrag()
     {
         transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        transform.Rotate(0, 0, 1);
+        transform.Rotate(0, 0, 500 * Time.deltaTime);
         transform.Translate(0, 0, 10);
         water.SetActive(true);
     }

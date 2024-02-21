@@ -9,6 +9,7 @@ TagManager:
   - dangerous
   - water
   - goal
+  - cleaner
   layers:
   - Default
   - TransparentFX

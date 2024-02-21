@@ -19,7 +19,12 @@ public class TitleScreenTextManager : MonoBehaviour
     void Start()
     {
         carsFixed.text = ""+PlayerPrefs.GetFloat("CarsFixed")+"";
-        moneyMade.text = "" + PlayerPrefs.GetFloat("MonetMade") + "";
+        moneyMade.text = "" + PlayerPrefs.GetFloat("MoneyMade") + "";
+
+        if (emotion1 == null) return;
+        if (emotion2 == null) return;
+        if (emotion3 == null) return;
+
         i = Random.Range(0, 10);
         if (i == 1)
         {
@@ -149,7 +154,8 @@ public class TitleScreenTextManager : MonoBehaviour
 
     void Update()
     {
-        
+        carsFixed.text = "" + PlayerPrefs.GetFloat("CarsFixed") + "";
+        moneyMade.text = "" + PlayerPrefs.GetFloat("MoneyMade") + "";
     }
 
     public void GoToMainScene()
