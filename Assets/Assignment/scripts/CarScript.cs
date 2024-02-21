@@ -12,7 +12,16 @@ public class CarScript : MonoBehaviour
 
     SpriteRenderer sr;
 
+    public carButtonScript carButton1;
+    public carButtonScript carButton2;
+    public carButtonScript carButton3;
+    public spinnythingScript spinny;
+    public leverScript lever;
+
     float pullInTimer = 2;
+    float pullOutTimer = 0;
+
+    public bool everyThingReady = false;
 
     void Start()
     {
@@ -35,6 +44,14 @@ public class CarScript : MonoBehaviour
         {
             sr.sprite = openHood;
             sr.sortingOrder = -10;
-        } 
+        }
+
+        if (carButton1.ready && carButton2.ready && carButton3.ready && spinny.ready && lever.ready)
+        {
+            everyThingReady = true;
+            sr.sprite = closedHood;
+            sr.sortingOrder = 3;
+            pullOutTimer = 10f;
+        }
     }
 }

@@ -12,6 +12,7 @@ public class PlayerSportScript : MonoBehaviour
     {
         sr = GetComponent<SpriteRenderer>();
         sr.color = Color.red;
+        Selected(false);
     }
 
     // Update is called once per frame
