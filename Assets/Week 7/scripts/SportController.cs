@@ -49,7 +49,7 @@ public class SportController : MonoBehaviour
         }
         if (Input.GetKeyUp(KeyCode.Space))
         {
-            direction = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - CurrentSelection.transform.position).normalized * charge;
+            direction = ((Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition) - (Vector2)CurrentSelection.transform.position).normalized * charge;
         }
     }
 
