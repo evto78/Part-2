@@ -8,6 +8,7 @@ TagManager:
   - interactable
   - dangerous
   - water
+  - goal
   layers:
   - Default
   - TransparentFX

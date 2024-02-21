@@ -3,15 +3,28 @@ using UnityEngine.EventSystems;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class SportController : MonoBehaviour
 {
 
     public Slider chargeSlider;
+    public TextMeshProUGUI scoreText;
 
     float charge;
     public float maxCharge;
     Vector2 direction;
+
+    public static int score { get; private set; }
+    public static void AddScore()
+    {
+        score += 1;
+    }
+
+    public void UpdateScoreText(int recivedScore)
+    {
+        scoreText.text = "score: " + recivedScore;
+    }
 
     public static PlayerSportScript CurrentSelection { get; private set; }
     public static void SetCurrentSelection(PlayerSportScript player)
@@ -35,6 +48,8 @@ public class SportController : MonoBehaviour
 
     private void Update()
     {
+        UpdateScoreText(score);
+
         if (CurrentSelection == null) return;
         if (Input.GetKeyDown(KeyCode.Space))
         {
