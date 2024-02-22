@@ -9,6 +9,8 @@ public class Fluctuate : MonoBehaviour
     public float i = -0.5f;
     bool fluctuateDirUp = false;
 
+    
+
     // Update is called once per frame
     void Update()
     {

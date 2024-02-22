@@ -11,6 +11,10 @@ public class CarScript : MonoBehaviour
     public Sprite closedHood;
     public Sprite openHood;
 
+    public AnimationCurve curve;
+
+    public GameObject destination;
+
     SpriteRenderer sr;
 
     public carButtonScript carButton1;
@@ -60,7 +64,8 @@ public class CarScript : MonoBehaviour
         {
             Debug.Log("GOIN" + pullOutTimer);
             pullOutTimer -= Time.deltaTime;
-            transform.Translate(0f, -3 * Time.deltaTime, 0f);
+            float interpolation = curve.Evaluate(Time.deltaTime * 10f);
+            transform.position = Vector3.Lerp(transform.position, destination.transform.position, interpolation);
             
         }
 

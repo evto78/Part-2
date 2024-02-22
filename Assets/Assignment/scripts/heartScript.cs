@@ -38,12 +38,9 @@ public class heartScript : MonoBehaviour
         transform.Translate(0, 0, 10);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void BeCleaned()
     {
-        if (collision.tag == "cleaner")
-        {
-            sr.color = Color.white;
-        }
+        sr.color = Color.white;
     }
 
     private void OnTriggerStay2D(Collider2D collision)
