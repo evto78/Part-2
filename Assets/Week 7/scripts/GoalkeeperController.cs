@@ -16,7 +16,7 @@ public class GoalkeeperController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        direction = ((Vector2)transform.position - (Vector2)SportController.CurrentSelection.transform.position) / 2;
+        direction = ((Vector2)SportController.CurrentSelection.transform.position - (Vector2)transform.position) / 2;
         goalkeeperRb.position = (Vector2)transform.position + direction;
     }
 }
